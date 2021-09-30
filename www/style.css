@@ -1,0 +1,209 @@
+body::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;  
+  border-radius: 10px;
+  background-color: rgba(192,192,192,0.1);
+}
+
+body::-webkit-scrollbar-thumb {
+  background: rgba(192,192,192, 1);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-track {
+  background-color: rgba(192,192,192,0.3);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(0, 153, 204); 
+  border-radius: 10px;
+}
+
+.main-header {
+  position: fixed;
+}
+
+.main-sidebar {
+  position: fixed;
+}
+
+.control-sidebar {
+  position: fixed;
+  padding-top: 0;
+  margin-top: 50px;
+}
+
+.content {
+  padding-top: 60px;
+  overflow: hidden !important;
+}
+
+.titulo_center {
+  text-align: center;
+  font-weight: bold;
+}
+
+div.filtros {
+  padding-bottom: 100px
+}
+
+div.filtros_char div.selectize-input {
+    max-height: 102px;
+    overflow-y: auto;
+}
+
+h3.control-sidebar-heading {
+  height: 0;
+  margin: 0;
+  padding: 0;
+}
+
+aside.control-sidebar.control-sidebar-dark {
+  min-height: 100%;
+  max-height: 100%;
+  overflow-y: auto;
+}
+
+div[class^="tooltip_svg_"] {
+  padding: 0 0 0 0 ;
+  height: 0 !important;
+  width: 0 !important;
+  top: 0 !important;
+  left: 0 !important;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+.wrapper {
+    background-color: #ecf0f5 !important;
+    overflow-y: hidden;
+    overflow: hidden;
+    height: 100%;
+    min-height: 100vh;
+}
+
+.btn {
+  overflow-wrap: anywhere !important;
+  white-space: normal !important;
+}
+
+.btn-file {
+    white-space: nowrap !important;
+}
+
+.dropdown-menu.open {
+  max-width: 100%;
+}
+
+.nota_tecnica_jerarquia_row {
+  display: flex;
+}
+
+div.nota_tecnica_jerarquia_row div.box {
+  height: 100%;
+}
+
+div.nota_tecnica_jerarquia_row div.box-body {
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  height: 100%;
+}
+
+div.nota_tecnica_jerarquia_row div.box-body
+div.ui-sortable {
+  height: 100%;
+}
+
+.nota_tecnica_juntar_btn {
+  width: 100%;
+  border: 0;
+}
+
+
+div.escenarios_inline_div div.col-sm-2 {
+  padding-right: 5px !important;
+  padding-left: 5px !important;
+}
+
+div.escenarios_inline_div div.col-sm-4 {
+  padding: 0 !important; 
+}
+
+div.escenarios_inline_div div.dataTables_scrollBody {
+  overflow-x: scroll !important;
+}
+
+div.escenarios_inline_div td {
+  padding: 0 3px 0 3px !important;
+}
+
+.btn {
+  border-radius: 0 !important;
+}
+
+.main-header .navbar {
+  background-color: rgb(0, 153, 204) !important;
+}
+
+.skin-blue-light .main-header .logo {
+  background-color: rgb(0, 153, 204) !important;
+}
+
+.main-header .logo {
+  padding: 0 5px;
+}
+
+.control-sidebar-dark {
+  background-color: transparent !important;
+}
+
+.control-sidebar-dark .nav-tabs.control-sidebar-tabs>li.active>a {
+  background-color: transparent !important;
+}
+
+.control-sidebar-dark+.control-sidebar-bg {
+  background-color: rgba(34, 45, 50, 0.7) !important;
+}
+
+.control-sidebar-open .content-wrapper {
+  margin-right: 0 !important;
+}
+
+.sidebar-collapse .content-wrapper {
+  margin-right: 0 !important;
+}
+
+table.dataTable.no-footer {
+  border-bottom: 0px !important;
+}
+
+div.dataTables_scrollBody {
+  border-bottom: 0px !important;
+}
+
+.box-header.with-border {
+  display: none;
+}
+
+.jsoneditor-type-object {
+  display: none !important;
+}
+
+.jsoneditor-extract {
+  display: none !important;
+}
+
+.jsoneditor-menu {
+  background-color: rgb(0, 153, 204) !important;
+  border-color: rgb(0, 153, 204) !important;
+}
