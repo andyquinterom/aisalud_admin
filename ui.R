@@ -57,7 +57,17 @@ shinyUI(
   # Modulos -------------------------------------------------------------------
         tabItems(
           tabItem(
-            tabName = "notas_tecnicas"
+            tabName = "notas_tecnicas",
+            box(
+              width = 6,
+              tags$h3("Notas técnicas"),
+              jsoneditor_ui("notas_tecnicas")
+            ),
+            box(
+              width = 6,
+              tags$h3("Perfiles"),
+              jsoneditor_ui("perfiles")
+            )
           )
         )
       )
