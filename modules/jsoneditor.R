@@ -17,6 +17,8 @@ jsoneditor_server <- function(id, json, ...) {
     id = id,
     module = function(input, output, session) {
 
+      args <- list(...)
+
       output$jsoneditor <- renderJsonedit({
         jsonedit(
           json,
@@ -29,7 +31,31 @@ jsoneditor_server <- function(id, json, ...) {
       })
 
       result <- reactive({
-        input$save$raw
+        if (!is.null(input$save$raw)) {
+          validado <- jsonlite::validate(
+            as.character(input$save$raw)
+          )
+          if (!is.null(args[["schema"]])) {
+            tryCatch(
+              expr = {
+                validado <- json_validate(
+                  json = input$save$raw,
+                  schema = toJSON(args[["schema"]])
+                ) %>%
+                  append(validado)
+              },
+              error = function(e) {
+                return(FALSE)
+              }
+            )
+          }
+          if (all(validado)) return(input$save$raw)
+          showNotification(
+            "No se ha guardado, JSON invalido.",
+            type = "error"
+          )
+        }
+        return(NULL)
       })
 
       return(result)

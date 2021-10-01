@@ -13,7 +13,23 @@
 
 shinyServer(function(input, output, session) {
 
-  # Edición de notas técnicas y perfiles
+  # Edición de notas técnicas y perfiles ---------------------------------------
+
+  table_list <- dbListTables(conn)
+
+  if ("perfiles_notas_tecnicas_v2" %in% table_list) {
+    string_notas_tecnicas <- tbl(conn, "perfiles_notas_tecnicas_v2") %>%
+      pull(notas_tecnicas)
+  } else {
+    string_notas_tecnica <- "{}"
+  }
+
+  if ("perfiles_usuario" %in% table_list) {
+    string_perfiles <- tbl(conn, "perfiles_usuario") %>%
+      pull(perfiles)
+  } else {
+    string_perfiles <- "{}"
+  }
 
   json_notastecnicas <- jsoneditor_server(
     id = "notas_tecnicas",
@@ -28,25 +44,33 @@ shinyServer(function(input, output, session) {
   )
 
   observe({
-    dbWriteTable(
-      conn,
-      "perfiles_notas_tecnicas",
-      data.frame(notas_tecnicas = json_notastecnicas()),
-      overwrite = TRUE
+    dbExecute(
+      conn = conn,
+      sqlInterpolate(
+        conn,
+        sql = "UPDATE perfiles_notas_tecnicas_v2
+              SET notas_tecnicas = ?json;",
+        json = json_notastecnicas()
+      )
     )
     showNotification("Notas técnicas actualizadas")
   }) %>%
     bindEvent(json_notastecnicas())
 
   observe({
-    dbWriteTable(
-      conn,
-      "perfiles_usuario",
-      data.frame(perfiles = json_perfiles()),
-      overwrite = TRUE
+    dbExecute(
+      conn = conn,
+      sqlInterpolate(
+        conn,
+        sql = "UPDATE perfiles_usuario
+              SET perfiles = ?json;",
+        json = json_perfiles()
+      )
     )
     showNotification("Perfiles actualizados")
   }) %>%
     bindEvent(json_perfiles())
+
+  # Fin edición de perfiles y notas técnicas -----------------------------------
 
 })
