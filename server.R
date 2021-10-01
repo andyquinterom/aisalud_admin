@@ -13,4 +13,40 @@
 
 shinyServer(function(input, output, session) {
 
+  # Edición de notas técnicas y perfiles
+
+  json_notastecnicas <- jsoneditor_server(
+    id = "notas_tecnicas",
+    json = string_notas_tecnicas,
+    schema = read_json("json_schemas/nota_tecnica.json")
+  )
+
+  json_perfiles <- jsoneditor_server(
+    id = "perfiles",
+    json = string_perfiles,
+    schema = read_json("json_schemas/perfiles.json")
+  )
+
+  observe({
+    dbWriteTable(
+      conn,
+      "perfiles_notas_tecnicas",
+      data.frame(notas_tecnicas = json_notastecnicas()),
+      overwrite = TRUE
+    )
+    showNotification("Notas técnicas actualizadas")
+  }) %>%
+    bindEvent(json_notastecnicas())
+
+  observe({
+    dbWriteTable(
+      conn,
+      "perfiles_usuario",
+      data.frame(perfiles = json_perfiles()),
+      overwrite = TRUE
+    )
+    showNotification("Perfiles actualizados")
+  }) %>%
+    bindEvent(json_perfiles())
+
 })

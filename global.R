@@ -50,5 +50,21 @@ conn <- dbConnect(
   bigint = "integer",
   sslmode = "allow")
 
+table_list <- dbListTables(conn)
+
+if ("perfiles_notas_tecnicas_v2" %in% table_list) {
+  string_notas_tecnicas <- tbl(conn, "perfiles_notas_tecnicas_v2") %>%
+    pull(notas_tecnicas)
+} else {
+  string_notas_tecnica <- "{}"
+}
+
+if ("perfiles_usuario" %in% table_list) {
+  string_perfiles <- tbl(conn, "perfiles_usuario") %>%
+    pull(perfiles)
+} else {
+  string_perfiles <- "{}"
+}
+
 # DT Spanish json
 dt_spanish <- "//cdn.datatables.net/plug-ins/1.10.11/i18n/Spanish.json"
