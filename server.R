@@ -21,7 +21,7 @@ shinyServer(function(input, output, session) {
     string_notas_tecnicas <- tbl(conn, "perfiles_notas_tecnicas_v2") %>%
       pull(notas_tecnicas)
   } else {
-    string_notas_tecnica <- "{}"
+    string_notas_tecnicas <- "{}"
   }
 
   if ("perfiles_usuario" %in% table_list) {

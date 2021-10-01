@@ -15,6 +15,7 @@
 
 # Carga de paquetes y opciones -------------------------------------------------
 
+library(readr)
 library(shiny)
 library(shinydashboard)
 library(shinydashboardPlus)
